@@ -10,6 +10,6 @@ class TestRenderedMovies:
 
     def test_movie_rating(self):
         rendered_movies = RenderedMovieInfo.get_rendered_movie_info("Inception")
-        assert isinstance(rendered_movies[0].rating,int)
+        assert isinstance(rendered_movies[0].rating,float)
 
 
