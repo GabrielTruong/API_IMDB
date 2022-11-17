@@ -1,15 +1,13 @@
 from api_modules.imdb_render import RenderedMovieInfo
 from api_modules.imdb_render import MovieInfo
+import unittest
+from unittest.mock import Mock
 
+class TestRenderedMovies(unittest.TestCase):
+    def test_movie_info(self):
+        rendered_movie_test = MovieInfo(
+            "Inception", "tt1234567", "201O, Leonardo Di Caprio", "test.png")
 
-class TestRenderedMovies:
-
-    def test_rendered_info(self):
-        rendered_movies = RenderedMovieInfo.get_rendered_movie_info("Inception")
-        assert isinstance(rendered_movies[0],MovieInfo)
-
-    def test_movie_rating(self):
-        rendered_movies = RenderedMovieInfo.get_rendered_movie_info("Inception")
-        assert isinstance(rendered_movies[0].rating,float)
-
+        assert isinstance(rendered_movie_test.title, str)
+    
 
