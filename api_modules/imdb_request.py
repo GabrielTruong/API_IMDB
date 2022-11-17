@@ -3,28 +3,33 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-API_KEY = os.environ.get('API_KEY')
+API_KEY_ENV = os.environ.get('API_KEY')
 
 
 class ImdbRequest:
-    _base_url = "https://imdb-api.com/en/API/"
+    def __init__(self):
+        self.API_KEY = ""
+        self._base_url = "https://imdb-api.com/en/API/"
 
-    @classmethod
-    def search_movie_info(cls, title=""):
+    def set_API_KEY(self,key):
+        self.API_KEY = key
+
+
+    def search_movie_info(self, title=""):
         search_type = "SearchMovie/"
-        response = requests.get(cls._base_url+search_type+API_KEY+"/"+title)
+        response = requests.get(self._base_url+search_type+self.API_KEY+"/"+title)
         return Response(status_code=response.status_code, content=response.json())
 
-    @classmethod
-    def search_movie_rating(cls, id=""):
+    
+    def search_movie_rating(self, id=""):
         search_type = "Ratings/"
-        response = requests.get(cls._base_url+search_type+API_KEY+"/"+id)
+        response = requests.get(self._base_url+search_type+self.API_KEY+"/"+id)
         return Response(status_code=response.status_code, content=response.json())
 
-    @classmethod
-    def search_movie_trailer(cls, id=""):
+    
+    def search_movie_trailer(self, id=""):
         search_type = "YouTubeTrailer/"
-        response = requests.get(cls._base_url+search_type+API_KEY+"/"+id)
+        response = requests.get(self._base_url+search_type+self.API_KEY+"/"+id)
         return Response(status_code=response.status_code, content=response.json())
 
 
