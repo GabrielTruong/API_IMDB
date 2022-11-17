@@ -38,4 +38,4 @@ jobs:
       run: |
         echo "The API key is:${{secrets.API_KEY}}"
 
-        pytest
+        python -m unittest discover test/
