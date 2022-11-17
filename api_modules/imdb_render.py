@@ -10,11 +10,10 @@ class MovieInfo():
         self.image = image
         self.rating = 0
         self.trailer = ""
-        
 
     def get_movie_rating(self):
         rating_response = ImdbRequest.search_movie_rating(self.id)
-
+        print(rating_response.content)
         if rating_response.status_code == 200:
             self.rating = rating_response.content["imDb"]
             return self.rating

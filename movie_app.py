@@ -1,5 +1,4 @@
 import streamlit as st
-import urllib.request
 from api_modules.imdb_render import RenderedMovieInfo
 
 
@@ -10,7 +9,8 @@ title = st.text_input('Enter the title of the movie', 'Inception')
 #st.write(f'API KEY is {st.secrets["api_key"]}')
 movie_list = RenderedMovieInfo.get_rendered_movie_info(title)
 movie_chosen = movie_list[0]
-
+movie_chosen.get_movie_rating()
+movie_chosen.get_movie_trailer()
 
 st.write(f'The movie is rated {movie_chosen.rating}/10')
 st.write('The trailer will appear below: ')

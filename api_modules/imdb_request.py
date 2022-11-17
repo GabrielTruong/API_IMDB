@@ -5,11 +5,13 @@ import streamlit as st
 
 load_dotenv()
 API_KEY = st.secrets["api_key"]
+#os.environ.get('API_KEY')
 
 
 class ImdbRequest:
 
     _base_url = "https://imdb-api.com/en/API/"
+
 
     @classmethod
     def search_movie_info(cls,title=""):
