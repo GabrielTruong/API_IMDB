@@ -1,11 +1,13 @@
 from api_modules.imdb_request import ImdbRequest
 from api_modules.imdb_request import Response
+import unittest
+from unittest.mock import Mock
 
 
-class TestMyTestClass:
+class TestMyTestClass(unittest.TestCase):
 
-    def test_request(self):
-        assert isinstance(ImdbRequest.search_movie_info(
-            title="inception"), Response)
-        assert ImdbRequest.search_movie_info(
-            title="inception").status_code == 200
+    def test_mock_request(self):
+        class_request = Response(200,{})
+        #class_request.status_code = Mock(return_value=200)
+        self.assertEqual(class_request.status_code,200)
+

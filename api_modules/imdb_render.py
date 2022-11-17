@@ -8,15 +8,24 @@ class MovieInfo():
         self.id = id
         self.description = description
         self.image = image
-        self.rating = self.getMovieRating()
+        self.rating = self.get_movie_rating()
+        self.trailer = self.get_movie_trailer()
 
-    def getMovieRating(self):
+    def get_movie_rating(self):
         rating_response = ImdbRequest.search_movie_rating(self.id)
 
         if rating_response.status_code == 200:
             return rating_response.content["imDb"]
         else:
             return (f"Error {rating_response.status_code}")
+    
+    def get_movie_trailer(self):
+        trailer_response = ImdbRequest.search_movie_trailer(self.id)
+
+        if trailer_response.status_code == 200:
+            return trailer_response.content["videoUrl"]
+        else:
+            return (f"Error {trailer_response.status_code}")
 
 
 class RenderedMovieInfo():

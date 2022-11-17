@@ -21,6 +21,12 @@ class ImdbRequest:
         response = requests.get(cls._base_url+search_type+API_KEY+"/"+id)
         return Response(status_code=response.status_code, content=response.json())
 
+    @classmethod
+    def search_movie_trailer(cls, id=""):
+        search_type = "YouTubeTrailer/"
+        response = requests.get(cls._base_url+search_type+API_KEY+"/"+id)
+        return Response(status_code=response.status_code, content=response.json())
+
 
 class Response:
     def __init__(self, status_code, content):
