@@ -1,23 +1,20 @@
-import streamlit as st 
-from PIL import Image
+import streamlit as st
 import urllib.request
 from api_modules.imdb_render import RenderedMovieInfo
 
 
-
 st.header("Welcome to Friday Movie !")
+st.write("You were about to watch a movie but you want to make sure it is good ? Convince yourself it is the right one by watching the trailer !")
 
-title = st.text_input('Are you searching for a movie ?', 'Inception')
+title = st.text_input('Enter the title of the movie', 'Inception')
 movie_list = RenderedMovieInfo.get_rendered_movie_info(title)
-movie_test = movie_list[0]
-st.write('The closest movie title is', movie_test.title)
-st.write('The cover is below: ')
+movie_chosen = movie_list[0]
 
-urllib.request.urlretrieve(
-  movie_test.image,
-   "movie_cover.png")
+st.write(f'The movie is rated {movie_chosen.rating}/10')
+st.write('The trailer will appear below: ')
+st.video(movie_chosen.trailer)
 
-img = Image.open("movie_cover.png")
-st.image(img, caption='Cover of the movie')
+
+
 
 
