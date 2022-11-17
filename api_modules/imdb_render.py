@@ -10,6 +10,7 @@ class MovieInfo():
         self.image = image
         self.rating = 0
         self.trailer = ""
+        
 
     def get_movie_rating(self):
         rating_response = ImdbRequest.search_movie_rating(self.id)
@@ -31,15 +32,13 @@ class MovieInfo():
 
 
 class RenderedMovieInfo():
-    def get_rendered_movie_info(key,title=""):
-        movie_response = ImdbRequest
-        movie_response.set_API_KEY(key)
-        movie_response.search_movie_info(title)
-        nb_movie = len(movie_response.content["results"])
-        if movie_response.status_code == 200:
-            return [MovieInfo(movie_response.content['results'][i]["title"],
-                              movie_response.content['results'][i]["id"],
-                              movie_response.content['results'][i]["description"],
-                              movie_response.content['results'][i]["image"]) for i in range(nb_movie)]
+    def get_rendered_movie_info(title=""):
+        movie_request = ImdbRequest().search_movie_info(title)
+        nb_movie = len(movie_request.content["results"])
+        if movie_request.status_code == 200:
+            return [MovieInfo(movie_request.content['results'][i]["title"],
+                              movie_request.content['results'][i]["id"],
+                              movie_request.content['results'][i]["description"],
+                              movie_request.content['results'][i]["image"]) for i in range(nb_movie)]
         else:
-            return (f"Error {movie_response.status_code}")
+            return (f"Error {movie_request.status_code}")
