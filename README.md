@@ -1,5 +1,7 @@
 # Create an API based project
 
+Link to the project host on streamlit cloud: https://lapbeer-movietrailer.streamlit.app/
+
 ## Objectives
 
 The goal of this mini project is to get used to Web API by manipulate one. The API we play with is the [IMDB-API](https://imdb-api.com/). The goal is to encapsulate the API to develop our own product. I chose to create a very simple app that from the name of the movie gives you the trailer associated.
