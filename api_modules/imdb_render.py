@@ -31,8 +31,10 @@ class MovieInfo():
 
 
 class RenderedMovieInfo():
-    def get_rendered_movie_info(title=""):
-        movie_response = ImdbRequest.search_movie_info(title)
+    def get_rendered_movie_info(key,title=""):
+        movie_response = ImdbRequest
+        movie_response.set_API_KEY(key)
+        movie_response.search_movie_info(title)
         nb_movie = len(movie_response.content["results"])
         if movie_response.status_code == 200:
             return [MovieInfo(movie_response.content['results'][i]["title"],
