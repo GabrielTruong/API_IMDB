@@ -23,7 +23,7 @@ The app should automatically launch in your localhost.
 
 ## Tests
 
-As mentionned earlier, this project aims to help me discover tests and Test Driven Development. I chose to use the `unittest` python package. 
+As mentionned earlier, this project aims to help me discover tests and Test Driven Development. I chose to use the `unittest` python package. I used the `patch` & `MagicMock` modules to 'mock' the behavior of certain function and API call to test the robustness of my web application.
 To run them all together, go to the root of the project and use the following command:
 ```bash
 python -m unittest discover test/
