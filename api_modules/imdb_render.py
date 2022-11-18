@@ -11,17 +11,18 @@ class MovieInfo():
         self.rating = 0
         self.trailer = ""
 
-    def get_movie_rating(self):
-        rating_response = ImdbRequest.search_movie_rating(self.id)
+    def get_movie_rating(self,API_KEY):
+        rating_response = ImdbRequest.search_movie_rating(API_KEY,self.id)
 
         if rating_response.status_code == 200:
             self.rating = rating_response.content["imDb"]
+
             return self.rating
         else:
             return (f"Error {rating_response.status_code}")
     
-    def get_movie_trailer(self):
-        trailer_response = ImdbRequest.search_movie_trailer(self.id)
+    def get_movie_trailer(self,API_KEY):
+        trailer_response = ImdbRequest.search_movie_trailer(API_KEY,self.id)
 
         if trailer_response.status_code == 200:
             self.trailer = trailer_response.content["videoUrl"]
@@ -31,9 +32,8 @@ class MovieInfo():
 
 
 class RenderedMovieInfo():
-
-    def get_rendered_movie_info(API_KEY,title=""):
-        movie_request = ImdbRequest(API_KEY).search_movie_info(title)
+    def get_rendered_movie_info(key,title=""):
+        movie_request = ImdbRequest().search_movie_info(key,title)
         nb_movie = len(movie_request.content["results"])
         if movie_request.status_code == 200:
             return [MovieInfo(movie_request.content['results'][i]["title"],
