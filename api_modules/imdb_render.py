@@ -13,7 +13,7 @@ class MovieInfo():
 
     def get_movie_rating(self):
         rating_response = ImdbRequest.search_movie_rating(self.id)
-        print(rating_response.content)
+
         if rating_response.status_code == 200:
             self.rating = rating_response.content["imDb"]
             return self.rating
@@ -31,8 +31,9 @@ class MovieInfo():
 
 
 class RenderedMovieInfo():
-    def get_rendered_movie_info(title=""):
-        movie_request = ImdbRequest().search_movie_info(title)
+
+    def get_rendered_movie_info(API_KEY,title=""):
+        movie_request = ImdbRequest(API_KEY).search_movie_info(title)
         nb_movie = len(movie_request.content["results"])
         if movie_request.status_code == 200:
             return [MovieInfo(movie_request.content['results'][i]["title"],
