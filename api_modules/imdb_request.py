@@ -1,23 +1,24 @@
 import requests
 from dotenv import load_dotenv
 import os
-import streamlit as st
+#import streamlit as st
 
 load_dotenv()
-API_KEY = st.secrets["api_key"]
-#os.environ.get('API_KEY')
-
+#API_KEY = os.environ.get('API_KEY')
+#st.secrets["api_key"]
 
 class ImdbRequest:
 
     _base_url = "https://imdb-api.com/en/API/"
-
+    def __init__(self,key):
+        self.API_KEY = key
 
     @classmethod
-    def search_movie_info(cls,title=""):
+    def search_movie_info(cls,self,title=""):
 
         search_type = "SearchMovie/"
-        response = requests.get(cls._base_url+search_type+API_KEY+"/"+title)
+        print(self.API_KEY)
+        response = requests.get(cls._base_url+search_type+self.API_KEY+"/"+title)
         return Response(status_code=response.status_code, content=response.json())
 
     @classmethod
