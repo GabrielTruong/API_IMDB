@@ -34,11 +34,12 @@ class MovieInfo():
 class RenderedMovieInfo():
     def get_rendered_movie_info(key,title=""):
         movie_request = ImdbRequest().search_movie_info(key,title)
-        nb_movie = len(movie_request.content["results"])
+        movie_result = movie_request.content["results"][0]
+        print(movie_result)
         if movie_request.status_code == 200:
-            return [MovieInfo(movie_request.content['results'][i]["title"],
-                              movie_request.content['results'][i]["id"],
-                              movie_request.content['results'][i]["description"],
-                              movie_request.content['results'][i]["image"]) for i in range(nb_movie)]
+            return MovieInfo(movie_result["title"],
+                              movie_result["id"],
+                              movie_result["description"],
+                              movie_result["image"])
         else:
-            return (f"Error {movie_request.status_code}")
+            return (f"Error {movie_result.status_code}")
