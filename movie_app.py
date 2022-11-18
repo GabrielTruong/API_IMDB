@@ -5,8 +5,8 @@ import os
 st.header("Welcome to Friday Movie !")
 st.write("You were about to watch a movie but you want to make sure it is good ? Convince yourself it is the right one by watching the trailer !")
 
-API_KEY = os.environ.get('API_KEY')
-#st.secrets["api_key"]
+API_KEY = st.secrets["api_key"]
+#os.environ.get('API_KEY')
 movie_name = ""
 try:
     title = st.text_input('Enter the title of the movie', movie_name)
