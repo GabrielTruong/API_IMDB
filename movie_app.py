@@ -12,8 +12,8 @@ try:
     title = st.text_input('Enter the title of the movie', movie_name)
 
 #st.write(f'API KEY is {st.secrets["api_key"]}')
-    movie_list = RenderedMovieInfo.get_rendered_movie_info(API_KEY,title)
-    movie_chosen = movie_list[0]
+    movie_chosen = RenderedMovieInfo.get_rendered_movie_info(API_KEY,title)
+    
     print(movie_chosen.id)
     movie_chosen.get_movie_rating(API_KEY)
     movie_chosen.get_movie_trailer(API_KEY)
