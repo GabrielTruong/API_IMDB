@@ -13,8 +13,6 @@ try:
 
 #st.write(f'API KEY is {st.secrets["api_key"]}')
     movie_chosen = RenderedMovieInfo.get_rendered_movie_info(API_KEY,title)
-    
-    print(movie_chosen.id)
     movie_chosen.get_movie_rating(API_KEY)
     movie_chosen.get_movie_trailer(API_KEY)
     st.write(f'The movie is rated {movie_chosen.rating}/10')
@@ -22,6 +20,7 @@ try:
     st.video(movie_chosen.trailer)
 except IndexError:
     st.write("This movie doesn't exist")
+    print("No return in results API Call")
 except TypeError:
     print("Empty string")
 
