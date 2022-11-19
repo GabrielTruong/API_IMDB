@@ -8,6 +8,12 @@ The goal of this mini project is to get used to Web API by manipulate one. The A
 
 Beside manipulating Web API and creating a web app using `streamlit`, I wanted to explore Test Driven Development and quality of code. That is why I didn't spend much time developping a complex app but instead a robust one. 
 
+## Demo
+
+
+https://user-images.githubusercontent.com/98752095/202849176-e504fb65-b5e8-4767-b38e-c212842afa0d.mp4
+
+
 ## Get Started
 
 Start by creating a environment for this project.
