@@ -1,6 +1,6 @@
 # Create an API based project
 
-Link to the project host on streamlit cloud: https://lapbeer-movietrailer.streamlit.app/
+Link to the project host on streamlit cloud: https://movietrailer.streamlit.app/
 
 ## Objectives
 
