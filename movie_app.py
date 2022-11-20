@@ -1,6 +1,5 @@
 import streamlit as st
 from api_modules.imdb_render import RenderedMovieInfo
-import os
 
 st.header("Welcome to Friday Movie !")
 st.write("You were about to watch a movie but you want to make sure it is good ? Convince yourself it is the right one by watching the trailer !")
