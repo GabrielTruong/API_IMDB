@@ -14,4 +14,4 @@ class TestRenderedMovies(unittest.TestCase):
 
         mock_get_info.return_value = mock_response
 
-        self.assertEqual(MovieInfo.get_movie_rating(self,API_KEY="test_key"),8.1)
+        self.assertEqual(MovieInfo.get_movie_rating(self),8.1)
