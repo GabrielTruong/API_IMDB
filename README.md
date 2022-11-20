@@ -40,3 +40,7 @@ Or if you want to run a single test:
 ```bash
 python -m unittest test/TEST_FILE_NAME
 ```
+
+Thank you [Antoine](https://github.com/antoinergr)for helping me in this project and support me during those late nights coding sessions.
+
+Credits to EPF & [Clément Roque](https://github.com/Clement-Roque) for teaching us this API course.
